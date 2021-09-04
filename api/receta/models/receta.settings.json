@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recetas",
+  "info": {
+    "name": "receta"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 3
+    },
+    "imagen": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "ingredientes": {
+      "type": "richtext",
+      "required": true
+    },
+    "preparacion": {
+      "type": "richtext",
+      "required": true
+    },
+    "categorias": {
+      "collection": "categoria",
+      "via": "recetas",
+      "dominant": true
+    }
+  }
+}
